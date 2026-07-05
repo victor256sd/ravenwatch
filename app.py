@@ -142,7 +142,7 @@ asset_df = get_tactical_assets()
 # --------------------------------------------------------------------------------
 # 4. DASHBOARD HEADER & SYSTEM STATUS METRICS
 # --------------------------------------------------------------------------------
-st.title("⚡ GSOC TACTICAL MONITOR")
+st.title("⚡ RAVENWATCH TACTICAL MONITOR")
 st.caption("🔒 EXECUTIVE PROTECTION & CORPORATE SECURITY INTELLIGENCE STREAM")
 
 m1, m2, m3, m4 = st.columns(4)
@@ -150,8 +150,8 @@ with m1:
     st.metric(label="🛰️ MONITOR STATUS", value="NOMINAL", delta="SYSTEM STABLE")
 with m2:
     st.metric(label="⚠️ LIVE SECURITY ALERTS", value=f"{len(advisories)} Active", delta="+1 Critical")
-with m3:
-    st.metric(label="👥 ON-SITE VIP CONVOYS", value="1 Active Track", delta="Bogotá Vector")
+# with m3:
+#     st.metric(label="👥 ON-SITE VIP CONVOYS", value="1 Active Track", delta="Bogotá Vector")
 with m4:
     st.metric(label="💻 CYBER THREAT INDEX", value="ELEVATED", delta="APT-41 Scans Active")
 
