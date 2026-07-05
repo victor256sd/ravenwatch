@@ -150,8 +150,8 @@ with m1:
     st.metric(label="🛰️ MONITOR STATUS", value="NOMINAL", delta="SYSTEM STABLE")
 with m2:
     st.metric(label="⚠️ LIVE SECURITY ALERTS", value=f"{len(advisories)} Active", delta="+1 Critical")
-# with m3:
-#     st.metric(label="👥 ON-SITE VIP CONVOYS", value="1 Active Track", delta="Bogotá Vector")
+with m3:
+    st.metric(label="👥 ON-SITE VIP CONVOYS", value="1 Active Track", delta="Bogotá Vector")
 with m4:
     st.metric(label="💻 CYBER THREAT INDEX", value="ELEVATED", delta="APT-41 Scans Active")
 
@@ -240,11 +240,13 @@ with right_column:
         st.info("ℹ️ Provide your OpenAI API key in the sidebar to activate real-time intelligence briefing models.")
         # Simulation Mock for testing visibility without an API key
         with st.expander("👁️ View Simulated Threat Model Output Template"):
-            st.markdown("""
-            **⚠️ CRITICAL INTERIM SECURITY BRIEF:**
-            *   **Bogotá Vector Analysis:** The Ex-Dir Convoy operational route displays elevated volatility metrics. Recommend shifting to low-profile B-tier armored transport vectors immediately.
-            *   **Lagos Infrastructure Guard:** Supply Chain Logistics Hub monitoring indicates a critical threshold threat index of **90**. Implement pre-planned asset lockups and suspend localized staff transits for the next 24 hours.
-            """)
+            st.markdown(f"""
+            {raw_advisories_text}
+            """)            
+            # **⚠️ CRITICAL INTERIM SECURITY BRIEF:**
+            # *   **Bogotá Vector Analysis:** The Ex-Dir Convoy operational route displays elevated volatility metrics. Recommend shifting to low-profile B-tier armored transport vectors immediately.
+            # *   **Lagos Infrastructure Guard:** Supply Chain Logistics Hub monitoring indicates a critical threshold threat index of **90**. Implement pre-planned asset lockups and suspend localized staff transits for the next 24 hours.
+            # """)
 
     st.subheader("🛡️ Strategic Posture Assessment")
     with st.container(border=True):
