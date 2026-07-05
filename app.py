@@ -238,16 +238,25 @@ with col_feed_2:
 with st.container(height=280, border=True):
     cyber_alerts = [("CRITICAL", "Zero-day exploitation vector detected targeting corporate remote executive mobile endpoints."),("WARNING", "Geopolitical hacktivist deployment targeting core logistical supply networks."),("NOTICE", "Planned civil demonstrations mapped across major regional operational hubs tomorrow."),("SECURITY", "Executive digital footprint exposure detected on clear-web tracking indexing platform.")]
 
+
 for level, msg in cyber_alerts:
-    color = "#ff007f" 
 
-if level == "CRITICAL" 
+    if level == "CRITICAL":
+        color = "#ff007f"
+    elif level == "WARNING":
+        color = "#f59e0b"
+    else:
+        color = "#00f2fe"
 
-else ("#f59e0b" if level == "WARNING" else "#00f2fe")
-
-st.markdown(f""f"{level}"f"{msg}"f"",unsafe_allow_html=True)
-
-
+    st.markdown(
+        f"""
+        <div class="intel-container">
+            <strong style="color:{color};">{level}</strong><br>
+            {msg}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 
 
