@@ -1,0 +1,8 @@
+cryptography
+feedparser
+openai
+pandas
+pydeck
+streamlit
+streamlit-authenticator
+tiktoken
