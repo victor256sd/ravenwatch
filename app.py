@@ -241,7 +241,9 @@ with st.container(height=280, border=True):
 for level, msg in cyber_alerts:
     color = "#ff007f" 
 
-if level == "CRITICAL" else ("#f59e0b" if level == "WARNING" else "#00f2fe")
+if level == "CRITICAL" 
+
+else ("#f59e0b" if level == "WARNING" else "#00f2fe")
 
 st.markdown(f""f"{level}"f"{msg}"f"",unsafe_allow_html=True)
 
