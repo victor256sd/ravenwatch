@@ -213,12 +213,12 @@ with right_column:
             """)
 
     st.subheader("🛡️ Strategic Posture Assessment")
-        with st.container(border=True):
-            st.markdown("Executive Protection Readiness Index:")
-            st.progress(0.92, text="Personal Security Detail (PSD) Allocation Matrix")
-            st.markdown("Digital footprint / OSINT Tracking status:")
-            st.progress(0.65, text="Executive Identity Dark Web Scrubbing Progress")
-            st.markdown("", unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown("Executive Protection Readiness Index:")
+        st.progress(0.92, text="Personal Security Detail (PSD) Allocation Matrix")
+        st.markdown("Digital footprint / OSINT Tracking status:")
+        st.progress(0.65, text="Executive Identity Dark Web Scrubbing Progress")
+        st.markdown("", unsafe_allow_html=True)
 
 # --------------------------------------------------------------------------------
 # 6. SPLIT PANEL LAYOUT ENGINE
