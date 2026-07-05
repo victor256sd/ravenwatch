@@ -101,8 +101,42 @@ def get_tactical_assets():
         'status': ['Amber Alert', 'Normal Operations', 'Critical Watch', 'Secure', 'Secure']
     })
 
+@st.cache_data(ttl=300)
+def fetch_news_feeds():
+    """
+    Pulls intelligence headlines from multiple RSS feeds.
+    """
+    
+    feeds = {
+        "BBC World": "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "BBC Technology": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+        "BBC Business": "http://feeds.bbci.co.uk/news/business/rss.xml",
+        "State Dept": "https://travel.state.gov/_res/rss/TAsTWs.xml",
+        "CISA": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+    }
+
+    articles = []
+
+    for source, url in feeds.items():
+        try:
+            feed = feedparser.parse(url)
+
+            for entry in feed.entries[:10]:
+                articles.append({
+                    "source": source,
+                    "title": entry.get("title", ""),
+                    "link": entry.get("link", ""),
+                    "summary": entry.get("summary", "")
+                })
+
+        except Exception:
+            continue
+
+    return articles[:30]
+
 # Gather real-time telemetry datasets
 advisories = fetch_travel_advisories()
+news_feed = fetch_news_feeds()
 asset_df = get_tactical_assets()
 
 # --------------------------------------------------------------------------------
@@ -229,14 +263,51 @@ with col_feed_1:
     st.subheader("🚩 Live US Department of State Advisories")
 
 with st.container(height=280, border=True):
-    for alert in advisories:
-        st.markdown(f""f"⚠️ {alert['title']}"f"{alert['summary'][:160]}..."f"<a href='{alert['link']}' target='_blank' style='color:#ff007f; text-decoration:none; font-size:12px;'>Review Dossier Link →"f"",unsafe_allow_html=True)
+    # for alert in advisories:
+    #     st.markdown(f""f"⚠️ {alert['title']}"f"{alert['summary'][:160]}..."f"<a href='{alert['link']}' target='_blank' style='color:#ff007f; text-decoration:none; font-size:12px;'>Review Dossier Link →"f"",unsafe_allow_html=True)
 
+    for alert in advisories:
+
+        title = alert.get("title", "")
+        summary = alert.get("summary", "")
+        link = alert.get("link", "#")
+        
+        st.markdown(
+            f"""
+            <div class="intel-container">
+                <strong>⚠️ {title}</strong><br>
+                {summary[:160]}<br> 
+                <a href='{link}' target='_blank'>
+                    Review Advisory →
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+            
 with col_feed_2:
     st.subheader("🌐 OSINT Critical Cyber & Asset Warnings")
 
 with st.container(height=280, border=True):
     cyber_alerts = [("CRITICAL", "Zero-day exploitation vector detected targeting corporate remote executive mobile endpoints."),("WARNING", "Geopolitical hacktivist deployment targeting core logistical supply networks."),("NOTICE", "Planned civil demonstrations mapped across major regional operational hubs tomorrow."),("SECURITY", "Executive digital footprint exposure detected on clear-web tracking indexing platform.")]
+    for article in news_feed[:10]:
+
+        title = alert.get("title", "")
+        source = alert.get("source", "")
+        link = alert.get("link", "#")
+        
+        st.markdown(
+            f"""
+            <div class="intel-container">
+                <strong>{source}</strong><br>
+                {title}<br>
+                <a href='{link}' target='_blank'>
+                    Read Article →
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 for level, msg in cyber_alerts:
 
