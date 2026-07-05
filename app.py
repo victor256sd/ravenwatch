@@ -53,7 +53,7 @@ st.markdown("""
             letter-spacing: 2px;
         }
     </style>
-""", unsafe_scale=True, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # --------------------------------------------------------------------------------
 # 2. OPENAI INTEGRATION & ENVIRONMENT SETUP
