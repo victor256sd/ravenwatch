@@ -85,9 +85,9 @@ def fetch_travel_advisories():
         pass
     # Fallback asset arrays if network firewall restricts RSS fetch
     return [
-        {"title": "Mexico - Level 3: Reconsider Travel (Crime & Kidnapping)", "link": "#", "summary": "High risk profile within specific transit corridors."},
-        {"title": "Colombia - Level 2: Exercise Increased Caution (Terrorism)", "link": "#", "summary": "Active operational footprints in localized rural border sectors."},
-        {"title": "Nigeria - Level 4: Do Not Travel (Civil Unrest & Kidnapping)", "link": "#", "summary": "Extreme tactical threat profile surrounding industrial infrastructure."}
+        {"title": "[Example] Mexico - Level 3: Reconsider Travel (Crime & Kidnapping)", "link": "#", "summary": "High risk profile within specific transit corridors."},
+        {"title": "[Example] Colombia - Level 2: Exercise Increased Caution (Terrorism)", "link": "#", "summary": "Active operational footprints in localized rural border sectors."},
+        {"title": "[Example] Nigeria - Level 4: Do Not Travel (Civil Unrest & Kidnapping)", "link": "#", "summary": "Extreme tactical threat profile surrounding industrial infrastructure."}
     ]
 
 @st.cache_data(ttl=600)
@@ -237,7 +237,6 @@ with col_feed_2:
 
 with st.container(height=280, border=True):
     cyber_alerts = [("CRITICAL", "Zero-day exploitation vector detected targeting corporate remote executive mobile endpoints."),("WARNING", "Geopolitical hacktivist deployment targeting core logistical supply networks."),("NOTICE", "Planned civil demonstrations mapped across major regional operational hubs tomorrow."),("SECURITY", "Executive digital footprint exposure detected on clear-web tracking indexing platform.")]
-
 
 for level, msg in cyber_alerts:
 
